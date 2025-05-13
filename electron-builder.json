@@ -1,0 +1,12 @@
+{
+    "appId": "com.radhey.midithingi",
+    "files": ["dist-electron", "dist-react"],
+    "icon" : "src/assets/icon.jpg",
+    "win": {
+        "target": ["portable", "msi"]  
+    },
+    "linux": {
+        "target": ["AppImage"],
+        "category": "AudioVideo;Audio"
+    }
+}

@@ -1,54 +1,82 @@
-# React + TypeScript + Vite
+# MIDI Electron App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A cross-platform MIDI application built with **Electron**, **React 19**, **TypeScript**, and **Vite**.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [npm](https://www.npmjs.com/)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Install dependencies
+
+```sh
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Start both the React frontend and Electron app in development mode:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```sh
+npm run dev
 ```
+
+- React app runs at [http://localhost:3000](http://localhost:3000)
+- Electron opens a window pointing to the dev server
+
+### Lint
+
+```sh
+npm run lint
+```
+
+### Build
+
+Build both the Electron and React apps:
+
+```sh
+npm run build
+```
+
+### Package for Distribution
+
+#### Windows
+
+```sh
+npm run t:win
+```
+
+#### Linux
+
+```sh
+npm run t:linux
+```
+
+The packaged app will be in the `dist/` directory.
+
+## Project Structure
+
+```
+├── dist-electron/      # Compiled Electron main process
+├── dist-react/         # Compiled React frontend
+├── src/
+│   ├── assets/         # App icons and static assets
+│   ├── electron/       # Electron main process source
+│   └── ui/             # React UI source
+├── electron-builder.json
+├── package.json
+├── vite.config.ts
+├── tsconfig*.json
+└── README.md
+```
+
+## Configuration
+
+- **Electron Builder:** See [electron-builder.json](electron-builder.json)
+- **Vite:** See [vite.config.ts](vite.config.ts)
+- **TypeScript:** See [tsconfig.app.json](tsconfig.app.json), [tsconfig.node.json](tsconfig.node.json)
+
